@@ -1,5 +1,5 @@
 const BetPosition = () => {
-  return <div>Bet Position</div>;
+  return <div className="betPosition">Bet Positions</div>;
 };
 
 export default BetPosition;
