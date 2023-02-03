@@ -3,7 +3,12 @@
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-color: #3e3e3e;
+  background: rgb(29, 29, 29);
+  background: linear-gradient(
+    0deg,
+    rgba(29, 29, 29, 1) 0%,
+    rgba(72, 72, 72, 1) 100%
+  );
   color: #c5a676;
 }
 
@@ -12,24 +17,60 @@
   justify-content: center;
   align-items: center;
   column-gap: 50px;
-  height: 40px;
+  height: 30px;
   background-color: #161616;
   border: 1px solid #000;
   text-transform: uppercase;
   font-weight: 700;
 }
+.header span {
+  color: #fff;
+}
 
 .gameInfo {
-  flex-grow: 5;
+  flex-grow: 8;
   border: 1px solid #1c1fdb;
 }
 
 .betPosition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 30px;
   flex-grow: 5;
   border: 1px solid #db1c45;
+  font-weight: 700;
+}
+
+.betContainer {
+  display: flex;
+  column-gap: 30px;
+}
+
+.bet {
+  width: 12rem;
+  height: 9rem;
+  border: 1px solid #e8e8f7;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-grow: 3;
   border: 1px solid #08ee08;
+}
+
+.footer button {
+  width: 190px;
+  height: 80px;
+  color: #c5a676;
+  font-size: 1.7rem;
+  background-color: #070707;
+  border-radius: 50px;
+  border: 2px solid #c5a676;
+  cursor: pointer;
 }
