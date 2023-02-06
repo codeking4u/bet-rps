@@ -1,0 +1,38 @@
+.gameInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+  //flex-grow: 8;
+  border: 1px solid #1c1fdb;
+  height: 35vh;
+
+  &__one {
+    font-size: 30px;
+    font-weight: 700;
+    .vs {
+      margin: 0 15px;
+    }
+  }
+  &__two {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0cb10c;
+  }
+
+  &__prize {
+    font-weight: 700;
+  }
+
+  &__amount {
+    color: #fff;
+  }
+
+  .playerName {
+    font-size: 30px;
+    &:nth-of-type(2) {
+      color: green;
+    }
+  }
+}

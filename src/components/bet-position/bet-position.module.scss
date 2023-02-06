@@ -1,0 +1,16 @@
+.betPosition {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 30px;
+  //flex-grow: 5;
+  height: 45vh;
+  border: 1px solid #db1c45;
+  font-weight: 700;
+
+  .betContainer {
+    display: flex;
+    column-gap: 30px;
+  }
+}
