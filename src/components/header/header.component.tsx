@@ -1,14 +1,18 @@
+import { useContext } from "react";
+import { GameContext } from "../../context/game.context";
+
 const Header = () => {
+  const { state } = useContext(GameContext);
   return (
     <div className="header">
       <div>
-        Balance: <span>XXXX</span>
+        Balance: <span>{state.balance}</span>
       </div>
       <div>
-        BET: <span>XX</span>
+        BET: <span>{state.betAmount}</span>
       </div>
       <div>
-        WIN: <span>X</span>
+        WIN: <span>{state.winCount}</span>
       </div>
     </div>
   );
