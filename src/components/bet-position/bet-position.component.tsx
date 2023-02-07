@@ -8,8 +8,9 @@ import styles from "./bet-position.module.scss";
 
 const BetPosition = () => {
   const { state, dispatch } = useContext(GameContext);
+  const keys = Object.keys(GameMoves) as (keyof typeof GameMoves)[];
 
-  const betClickHandler = (bet: string) => {
+  const betClickHandler = (bet: keyof typeof GameMoves) => {
     console.log("clicked");
     dispatch({ type: "bet", bets: bet });
   };
@@ -18,7 +19,7 @@ const BetPosition = () => {
     <div className={styles.betPosition}>
       <div>PICK YOUR POSITIONS</div>
       <div className={styles.betContainer}>
-        {Object.values(GameMoves).map((move) => (
+        {keys.map((move) => (
           <Bet key={move} bet={move} onClick={() => betClickHandler(move)} />
         ))}
       </div>

@@ -8,7 +8,7 @@ interface gameProviderContextProps {
 
 interface GameContextProp {
   state: {
-    playerSelection: [];
+    playerSelection: string[];
     computer: string;
     winner: string;
     selectedMoves: string[];
@@ -36,10 +36,13 @@ export const GameContext = createContext<GameContextProp>({
       [GameMoves.Scissors]: 0,
     },
   },
-  dispatch: (_: any) => {},
+  dispatch: (_: keyof typeof GameMoves) => {},
 });
 
-const gameReducer = (state: any, action: any) => {
+const gameReducer = (
+  state: any,
+  action: { type: string; bets: keyof typeof GameMoves }
+) => {
   switch (action.type) {
     case "play":
       const computer = Object.values(GameMoves)[Math.floor(Math.random() * 3)];
@@ -69,12 +72,12 @@ const gameReducer = (state: any, action: any) => {
           state.playerSelection.length === 2 &&
           !state.playerSelection.includes(action.bets)
         ) {
-          console.log(JSON.stringify(state));
           alert("Max two selections are possible");
           return state;
         }
 
-        state.bets[action.bets] += 1;
+        state.bets[GameMoves[action.bets]] += 1;
+        console.log(JSON.stringify(state));
         return {
           ...state,
           playerSelection: state.playerSelection.includes(action.bets)
@@ -102,17 +105,21 @@ export const GameProvider = ({ children }: gameProviderContextProps) => {
     coinValue: 500,
     balance: 5000,
     winCount: 0,
-    bets: { rock: 0, paper: 0, scissors: 0 },
+    bets: {
+      [GameMoves.Rock]: 0,
+      [GameMoves.Paper]: 0,
+      [GameMoves.Scissors]: 0,
+    },
   });
   const [playerMove, setPlayerMove] = useState("");
 
-  const handleBet = () => {
+  /* const handleBet = () => {
     if (playerMove) {
-      dispatch({ type: "play", move: playerMove });
+      dispatch({ type: "play", bets: playerMove });
     } else {
       dispatch({ type: "bet", bets: playerMove });
     }
-  };
+  }; */
   return (
     <GameContext.Provider value={{ state, dispatch }}>
       {children}

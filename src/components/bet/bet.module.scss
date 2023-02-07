@@ -11,6 +11,13 @@
   cursor: pointer;
   text-transform: uppercase;
 
+  &__info {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    column-gap: 10px;
+  }
+
   &__value {
     display: flex;
     justify-content: center;
@@ -20,6 +27,8 @@
     border-radius: 50%;
     background-color: #fff;
     border: 4px solid #225eff;
+    font-size: 0.8rem;
+    font-weight: 800;
     color: #000;
   }
 

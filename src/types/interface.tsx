@@ -1,3 +1,4 @@
+import { GameMoves } from "./game-move.enum";
 export interface BetPostions {
   id: number;
   title: string;
@@ -5,6 +6,6 @@ export interface BetPostions {
 }
 
 export interface betInterface {
-  bet: string;
+  bet: keyof typeof GameMoves;
   onClick: (bet: string) => void;
 }
