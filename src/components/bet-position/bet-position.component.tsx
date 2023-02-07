@@ -11,7 +11,6 @@ const BetPosition = () => {
   const keys = Object.keys(GameMoves) as (keyof typeof GameMoves)[];
 
   const betClickHandler = (bet: keyof typeof GameMoves) => {
-    console.log("clicked");
     dispatch({ type: "bet", bets: bet });
   };
 

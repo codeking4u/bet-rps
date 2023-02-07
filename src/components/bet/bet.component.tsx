@@ -7,15 +7,16 @@ import styles from "./bet.module.scss";
 
 const Bet = ({ bet, onClick }: betInterface) => {
   const { state } = useContext(GameContext);
+  const gameMove = GameMoves[bet];
   return (
     <div
       className={`${styles.betOption} ${styles[bet.toLowerCase()]}`}
       onClick={() => onClick(bet)}
     >
-      {state.playerSelection.includes(bet) && (
+      {state.playerSelection.includes(gameMove) && (
         <div className={styles.betOption__info}>
           <div className={styles.betOption__value}>
-            {state.coinValue * state.bets[GameMoves[bet]]}
+            {state.coinValue * state.bets[gameMove]}
           </div>
         </div>
       )}

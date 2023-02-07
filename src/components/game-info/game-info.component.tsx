@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
-
+import { useContext } from "react";
+import { GameContext } from "../../context/game.context";
 import styles from "./game-info.module.scss";
 
 const GameInfo = () => {
-  const looser = "ROCK";
-  const winner = "PAPER";
+  const { state } = useContext(GameContext);
+  const looser = state.computerSelection;
+  const winner = state.winner;
   const winAmount = "1000";
-  const [showMessage1, setShowMessage1] = useState(true);
+  const [showMessage1, setShowMessage1] = useState(false);
   const [showMessage2, setShowMessage2] = useState(false);
+  const gameStatus = state.gameStatus;
 
   useEffect(() => {
-    setTimeout(() => {
+    if (gameStatus === "IN_PROGRESS") {
+      setShowMessage1(true);
+    } else if (gameStatus === "RESULT_TIME") {
       setShowMessage1(false);
       setShowMessage2(true);
-    }, 3000);
-  }, []);
+    } else {
+      setShowMessage1(false);
+      setShowMessage2(false);
+    }
+  }, [gameStatus]);
 
   return (
     <div className={styles.gameInfo}>

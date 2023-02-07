@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //flex-grow: 3;
+  height: 20vh;
+  border: 1px solid #08ee08;
+}
+
+.footer button {
+  width: 190px;
+  height: 80px;
+  color: #c5a676;
+  font-size: 1.7rem;
+  background-color: #070707;
+  border-radius: 50px;
+  border: 2px solid #c5a676;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #191919;
+    border: 2px solid #4c463a;
+    color: #4c463a;
+    cursor: not-allowed;
+  }
+}
