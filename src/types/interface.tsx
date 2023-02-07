@@ -6,4 +6,5 @@ export interface BetPostions {
 
 export interface betInterface {
   bet: string;
+  onClick: (bet: string) => void;
 }

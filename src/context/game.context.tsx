@@ -1,32 +1,40 @@
 import { createContext, useState, useReducer } from "react";
 
+import { GameMoves } from "../types/game-move.enum";
+
 interface gameProviderContextProps {
   children: React.ReactNode;
 }
 
 interface GameContextProp {
   state: {
-    player: string;
+    playerSelection: [];
     computer: string;
     winner: string;
-    moves: string[];
+    selectedMoves: string[];
+    coinValue: number;
     betAmount: number;
     balance: number;
     winCount: number;
-    bets: { [key: string]: number };
+    bets: { [key in GameMoves]: number };
   };
   dispatch: any;
 }
 export const GameContext = createContext<GameContextProp>({
   state: {
-    player: "",
+    playerSelection: [],
     computer: "",
     winner: "",
-    moves: ["rock", "paper", "scissors"],
-    betAmount: 500,
+    selectedMoves: [],
+    coinValue: 500,
+    betAmount: 0,
     balance: 5000,
     winCount: 0,
-    bets: { rock: 0, paper: 0, scissors: 0 },
+    bets: {
+      [GameMoves.Rock]: 0,
+      [GameMoves.Paper]: 0,
+      [GameMoves.Scissors]: 0,
+    },
   },
   dispatch: (_: any) => {},
 });
@@ -34,15 +42,18 @@ export const GameContext = createContext<GameContextProp>({
 const gameReducer = (state: any, action: any) => {
   switch (action.type) {
     case "play":
-      const computer =
-        state.moves[Math.floor(Math.random() * state.moves.length)];
+      const computer = Object.values(GameMoves)[Math.floor(Math.random() * 3)];
+
       let winner = "";
-      if (state.player === computer) {
+      if (state.playerSelection.includes(computer)) {
         winner = "tie";
       } else if (
-        (state.player === "rock" && computer === "scissors") ||
-        (state.player === "paper" && computer === "rock") ||
-        (state.player === "scissors" && computer === "paper")
+        (state.playerSelection.includes(GameMoves.Rock) &&
+          computer === GameMoves.Scissors) ||
+        (state.playerSelection.includes(GameMoves.Paper) &&
+          computer === GameMoves.Rock) ||
+        (state.playerSelection.includes(GameMoves.Scissors) &&
+          computer === GameMoves.Paper)
       ) {
         winner = "player";
         state.balance += state.betAmount;
@@ -53,11 +64,24 @@ const gameReducer = (state: any, action: any) => {
       }
       return { ...state, computer, winner, bets: { ...state.bets } };
     case "bet":
-      if (state.balance >= state.betAmount * 2) {
-        state.bets[action.move] += 1;
+      if (state.balance >= state.coinValue) {
+        if (
+          state.playerSelection.length === 2 &&
+          !state.playerSelection.includes(action.bets)
+        ) {
+          console.log(JSON.stringify(state));
+          alert("Max two selections are possible");
+          return state;
+        }
+
+        state.bets[action.bets] += 1;
         return {
           ...state,
-          balance: state.balance - state.betAmount * 2,
+          playerSelection: state.playerSelection.includes(action.bets)
+            ? [...state.playerSelection]
+            : [...state.playerSelection, action.bets],
+          balance: state.balance - state.coinValue,
+          betAmount: state.betAmount + state.coinValue,
           bets: { ...state.bets },
         };
       } else {
@@ -70,11 +94,12 @@ const gameReducer = (state: any, action: any) => {
 
 export const GameProvider = ({ children }: gameProviderContextProps) => {
   const [state, dispatch] = useReducer(gameReducer, {
-    player: "",
-    computer: "",
+    playerSelection: [],
+    computerSelection: "",
     winner: "",
     moves: ["rock", "paper", "scissors"],
-    betAmount: 500,
+    betAmount: 0,
+    coinValue: 500,
     balance: 5000,
     winCount: 0,
     bets: { rock: 0, paper: 0, scissors: 0 },
