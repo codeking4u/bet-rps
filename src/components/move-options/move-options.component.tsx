@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import Bet from "../bet/bet.component";
+import Bet from "../move/move.component";
 
 import { GameMoves } from "../../types/game-move.enum";
 import { GameContext } from "../../context/game.context";
 
-import styles from "./bet-position.module.scss";
+import styles from "./move-options.module.scss";
 
-const BetPosition = () => {
+const MoveOptions = () => {
   const { state, dispatch } = useContext(GameContext);
   const keys = Object.keys(GameMoves) as (keyof typeof GameMoves)[];
 
@@ -34,4 +34,4 @@ const BetPosition = () => {
   );
 };
 
-export default BetPosition;
+export default MoveOptions;

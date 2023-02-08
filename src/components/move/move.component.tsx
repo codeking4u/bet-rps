@@ -3,7 +3,7 @@ import { betInterface } from "../../types/interface";
 import { GameContext } from "../../context/game.context";
 import { GameMoves } from "../../types/game-move.enum";
 
-import styles from "./bet.module.scss";
+import styles from "./move.module.scss";
 
 const Bet = ({ bet, onClick }: betInterface) => {
   const { state } = useContext(GameContext);

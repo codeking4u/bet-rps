@@ -3,7 +3,7 @@ import "./App.scss";
 
 import Header from "./components/header/header.component";
 import GameInfo from "./components/game-info/game-info.component";
-import BetPosition from "./components/bet-position/bet-position.component";
+import MoveOptions from "./components/move-options/move-options.component";
 import Footer from "./components/footer/footer.component";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <GameInfo />
-      <BetPosition />
+      <MoveOptions />
       <Footer />
     </div>
   );
