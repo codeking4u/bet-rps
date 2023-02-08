@@ -11,6 +11,10 @@ const BetPosition = () => {
   const keys = Object.keys(GameMoves) as (keyof typeof GameMoves)[];
 
   const betClickHandler = (bet: keyof typeof GameMoves) => {
+    if (state.balance < state.coinValue) {
+      alert("You do not have enough balance to play!");
+      return;
+    }
     dispatch({ type: "bet", bets: bet });
   };
 

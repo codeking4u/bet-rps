@@ -24,6 +24,7 @@ export const initialDefaultState = {
   computerSelection: "",
   winner: "",
   winnerType: "",
+  winningAmount: 0,
   betAmount: 0,
   coinValue: 500,
   balance: 5000,

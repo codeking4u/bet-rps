@@ -35,31 +35,35 @@ export const gameReducer = (
 
     case "play":
       const computer = Object.values(GameMoves)[Math.floor(Math.random() * 3)];
-
-      let winnerData = winnerLogic(computer, state.playerSelection);
-      let winner = winnerData[0];
-      let winnerType = winnerData[1];
-
-      if (winnerType === "Player") {
-        state.winCount += 1;
-        if (state.playerSelection.length === 1) {
-          state.balance += state.betAmount * WinMultiple.OneSelection;
-        } else {
-          state.balance += state.betAmount * WinMultiple.TwoSelection;
-        }
-      }
-
       return {
         ...state,
         computerSelection: computer,
-        winner,
-        winnerType,
-        bets: { ...state.bets },
         gameStatus: "IN_PROGRESS",
       };
     case "result":
+      let winnerData = winnerLogic(
+        state.computerSelection,
+        state.playerSelection
+      );
+      let winner = winnerData[0];
+      let winnerType = winnerData[1];
+      let winningAmount = 0;
+      if (winnerType === "Player") {
+        state.winCount += 1;
+        if (state.playerSelection.length === 1) {
+          winningAmount = state.betAmount * WinMultiple.OneSelection;
+          state.balance += winningAmount;
+        } else {
+          winningAmount = state.betAmount * WinMultiple.TwoSelection;
+          state.balance += winningAmount;
+        }
+      }
       return {
         ...state,
+        winner,
+        winnerType,
+        winningAmount,
+        bets: { ...state.bets },
         gameStatus: "RESULT_TIME",
       };
     case "reset":
@@ -69,6 +73,7 @@ export const gameReducer = (
         computerSelection: "",
         winner: "",
         winnerType: "",
+        winningAmount: 0,
         betAmount: 0,
         bets: {
           [GameMoves.Rock]: 0,

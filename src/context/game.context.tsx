@@ -6,22 +6,7 @@ import { gameReducer } from "../utils/gameReducer";
 import { initialDefaultState } from "../utils/gamelogic";
 
 export const GameContext = createContext<GameContextProp>({
-  state: {
-    playerSelection: [],
-    computerSelection: "",
-    winner: "",
-    winnerType: "",
-    coinValue: 500,
-    betAmount: 0,
-    balance: 5000,
-    winCount: 0,
-    bets: {
-      [GameMoves.Rock]: 0,
-      [GameMoves.Paper]: 0,
-      [GameMoves.Scissors]: 0,
-    },
-    gameStatus: "START_PLAY",
-  },
+  state: initialDefaultState,
   dispatch: (_: keyof typeof GameMoves) => {},
 });
 

@@ -15,8 +15,10 @@ const Bet = ({ bet, onClick }: betInterface) => {
   return (
     <div
       className={`${styles.betOption} ${styles[bet.toLowerCase()]} ${
-        disableMoveClass ? styles.disableMove : ""
-      }`}
+        gameMove === state.winner && state.winnerType === "Player"
+          ? styles.winner
+          : ""
+      } ${disableMoveClass ? styles.disableMove : ""}`}
       onClick={() => onClick(bet)}
     >
       {state.playerSelection.includes(gameMove) && (

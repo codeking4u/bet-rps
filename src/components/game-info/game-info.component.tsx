@@ -9,7 +9,7 @@ const GameInfo = () => {
   const playerSelection = state.playerSelection;
   const winner = state.winner;
   const winnerType = state.winnerType;
-  const winAmount = "1000";
+  const winAmount = state.winningAmount;
   const [showMessage1, setShowMessage1] = useState(false);
   const [showMessage2, setShowMessage2] = useState(false);
   const gameStatus = state.gameStatus;
@@ -51,7 +51,9 @@ const GameInfo = () => {
       {showMessage2 && (
         <div className={styles.gameInfo__prize}>
           {winnerType === "Player" ? "YOU" : "COMPUTER"} WON{" "}
-          <span className={styles.gameInfo__amount}>{winAmount}</span>
+          {state.winnerType === "Player" && (
+            <span className={styles.gameInfo__amount}>{winAmount}</span>
+          )}
         </div>
       )}
     </div>

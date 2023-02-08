@@ -11,8 +11,27 @@
   cursor: pointer;
   text-transform: uppercase;
 
+  &.rock {
+    color: #2680ea;
+    background-color: #211f4f;
+    border: 1px solid #2680ea;
+  }
+  &.paper {
+    color: #16c359;
+    background-color: #1a381d;
+    border: 1px solid #16c359;
+  }
+  &.scissors {
+    color: #e31542;
+    background-color: #50091e;
+    border: 1px solid #e31542;
+  }
+
   &.disableMove {
     pointer-events: none;
+  }
+  &.winner {
+    border-width: 4px;
   }
 
   &__info {
@@ -34,21 +53,5 @@
     font-size: 0.8rem;
     font-weight: 800;
     color: #000;
-  }
-
-  &.rock {
-    color: #2680ea;
-    background-color: #211f4f;
-    border: 1px solid #2680ea;
-  }
-  &.paper {
-    color: #16c359;
-    background-color: #1a381d;
-    border: 1px solid #16c359;
-  }
-  &.scissors {
-    color: #e31542;
-    background-color: #50091e;
-    border: 1px solid #e31542;
   }
 }
