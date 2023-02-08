@@ -1,4 +1,4 @@
-# Rock, Paper, Scissors Game
+# [Rock, Paper, Scissors Game](https://betrps.netlify.app/)
 
 A Rock, Paper, Scissors game, with the ability to bet on the winning position.
 
@@ -35,3 +35,5 @@ A Rock, Paper, Scissors game, with the ability to bet on the winning position.
 4. For building
 
 ### `npm run build`
+
+Hosted on Netlify: https://betrps.netlify.app/
