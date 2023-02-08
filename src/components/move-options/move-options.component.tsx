@@ -1,3 +1,5 @@
+/* This component is a container to Game Moves  */
+
 import { useContext } from "react";
 import Move from "../move/move.component";
 

@@ -1,3 +1,5 @@
+/* This component returns the Game Moves, i.e. Rock Paper Scissors  */
+
 import { useContext } from "react";
 import { betInterface } from "../../types/interface";
 import { GameContext } from "../../context/game.context";

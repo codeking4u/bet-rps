@@ -1,3 +1,5 @@
+/* This component is responsible to display game info */
+
 import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { GameContext } from "../../context/game.context";

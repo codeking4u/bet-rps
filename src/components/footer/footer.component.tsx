@@ -1,3 +1,5 @@
+/* This component is responsible to manage game buttons */
+
 import { useContext } from "react";
 import { GameContext } from "../../context/game.context";
 
