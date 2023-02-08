@@ -6,6 +6,11 @@ import styles from "./footer.module.scss";
 const Footer = () => {
   const { state, dispatch } = useContext(GameContext);
   const handlePlay = () => {
+    if (state.playerSelection.length === 0) {
+      alert("Please select atleast one move first!");
+      return;
+    }
+    
     dispatch({ type: "play" });
     setTimeout(function () {
       dispatch({ type: "result" });
