@@ -4,8 +4,6 @@
   align-items: center;
   flex-direction: column;
   row-gap: 10px;
-  //flex-grow: 8;
-  border: 1px solid #1c1fdb;
   height: 35vh;
 
   &__one {
@@ -21,9 +19,16 @@
     font-size: 45px;
     font-weight: 700;
     color: #0cb10c;
+    text-transform: uppercase;
 
-    .winner {
-      text-transform: uppercase;
+    &.scissors {
+      color: #e31542ed;
+    }
+    &.paper {
+      color: #16c359;
+    }
+    &.rock {
+      color: #2680ea;
     }
   }
 

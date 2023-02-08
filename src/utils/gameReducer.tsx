@@ -1,4 +1,4 @@
-import { GameMoves } from "../types/game-move.enum";
+import { GameMoves, WinMultiple } from "../types/game-move.enum";
 import { winnerLogic } from "../utils/gamelogic";
 
 export const gameReducer = (
@@ -13,7 +13,7 @@ export const gameReducer = (
           state.playerSelection.length === 2 &&
           !state.playerSelection.includes(moveSelection)
         ) {
-          alert("Max two selections are possible");
+          alert("Max two selections are possible!");
           return state;
         }
 
@@ -40,11 +40,13 @@ export const gameReducer = (
       let winner = winnerData[0];
       let winnerType = winnerData[1];
 
-      if (winner === "player") {
-        state.balance += state.betAmount;
+      if (winnerType === "Player") {
         state.winCount += 1;
-      } else {
-        state.balance -= state.betAmount;
+        if (state.playerSelection.length === 1) {
+          state.balance += state.betAmount * WinMultiple.OneSelection;
+        } else {
+          state.balance += state.betAmount * WinMultiple.TwoSelection;
+        }
       }
 
       return {
@@ -62,15 +64,12 @@ export const gameReducer = (
       };
     case "reset":
       return {
+        ...state,
         playerSelection: [],
         computerSelection: "",
         winner: "",
         winnerType: "",
-        moves: ["rock", "paper", "scissors"],
         betAmount: 0,
-        coinValue: 500,
-        balance: 5000,
-        winCount: 0,
         bets: {
           [GameMoves.Rock]: 0,
           [GameMoves.Paper]: 0,

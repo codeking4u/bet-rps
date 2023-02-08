@@ -44,13 +44,13 @@ const GameInfo = () => {
         </div>
       )}
       {showMessage2 && (
-        <div className={styles.gameInfo__two}>
-          <span className={styles.winner}>{winner}</span> WON
+        <div className={`${styles.gameInfo__two} ${styles[winner]}`}>
+          <span>{winner}</span> WON
         </div>
       )}
       {showMessage2 && (
         <div className={styles.gameInfo__prize}>
-          {winnerType == "Player" ? "YOU" : "COMPUTER"} WON{" "}
+          {winnerType === "Player" ? "YOU" : "COMPUTER"} WON{" "}
           <span className={styles.gameInfo__amount}>{winAmount}</span>
         </div>
       )}
