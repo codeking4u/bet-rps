@@ -12,5 +12,8 @@
   .betContainer {
     display: flex;
     column-gap: 30px;
+    &.disableMove {
+      cursor: not-allowed;
+    }
   }
 }

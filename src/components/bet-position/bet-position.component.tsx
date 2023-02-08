@@ -17,7 +17,11 @@ const BetPosition = () => {
   return (
     <div className={styles.betPosition}>
       <div>PICK YOUR POSITIONS</div>
-      <div className={styles.betContainer}>
+      <div
+        className={`${styles.betContainer} ${
+          state.gameStatus !== "START_PLAY" ? styles.disableMove : ""
+        }`}
+      >
         {keys.map((move) => (
           <Bet key={move} bet={move} onClick={() => betClickHandler(move)} />
         ))}

@@ -8,9 +8,15 @@ import styles from "./bet.module.scss";
 const Bet = ({ bet, onClick }: betInterface) => {
   const { state } = useContext(GameContext);
   const gameMove = GameMoves[bet];
+  let disableMoveClass = false;
+  if (state.gameStatus !== "START_PLAY") {
+    disableMoveClass = true;
+  }
   return (
     <div
-      className={`${styles.betOption} ${styles[bet.toLowerCase()]}`}
+      className={`${styles.betOption} ${styles[bet.toLowerCase()]} ${
+        disableMoveClass ? styles.disableMove : ""
+      }`}
       onClick={() => onClick(bet)}
     >
       {state.playerSelection.includes(gameMove) && (

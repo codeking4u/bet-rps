@@ -11,6 +11,10 @@
   cursor: pointer;
   text-transform: uppercase;
 
+  &.disableMove {
+    pointer-events: none;
+  }
+
   &__info {
     display: flex;
     justify-content: left;
