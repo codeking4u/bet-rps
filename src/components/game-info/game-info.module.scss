@@ -9,30 +9,47 @@
   height: 35vh;
 
   &__one {
+    display: flex;
     font-size: 30px;
     font-weight: 700;
+
     .vs {
-      margin: 0 15px;
+      margin: 0 40px;
     }
   }
   &__two {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 700;
     color: #0cb10c;
+
+    .winner {
+      text-transform: uppercase;
+    }
   }
 
   &__prize {
     font-weight: 700;
+    text-transform: uppercase;
   }
 
   &__amount {
     color: #fff;
   }
 
-  .playerName {
-    font-size: 30px;
-    &:nth-of-type(2) {
-      color: green;
+  &__names {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .playerName {
+      font-size: 40px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .playerType {
+      color: #d8db1c;
+      font-size: 12px;
     }
   }
 }

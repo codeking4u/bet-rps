@@ -10,7 +10,7 @@ const Footer = () => {
       alert("Please select atleast one move first!");
       return;
     }
-    
+
     dispatch({ type: "play" });
     setTimeout(function () {
       dispatch({ type: "result" });
@@ -22,11 +22,11 @@ const Footer = () => {
 
   return (
     <div className={styles.footer}>
-      {state.gameStatus == "RESULT_TIME" ? (
+      {state.gameStatus === "RESULT_TIME" ? (
         <button onClick={handleClear}>CLEAR</button>
       ) : (
         <button
-          disabled={state.gameStatus == "IN_PROGRESS"}
+          disabled={state.gameStatus === "IN_PROGRESS"}
           onClick={handlePlay}
         >
           PLAY

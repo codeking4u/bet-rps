@@ -5,8 +5,10 @@ import styles from "./game-info.module.scss";
 
 const GameInfo = () => {
   const { state } = useContext(GameContext);
-  const looser = state.computerSelection;
+  const computerSelection = state.computerSelection;
+  const playerSelection = state.playerSelection;
   const winner = state.winner;
+  const winnerType = state.winnerType;
   const winAmount = "1000";
   const [showMessage1, setShowMessage1] = useState(false);
   const [showMessage2, setShowMessage2] = useState(false);
@@ -28,19 +30,28 @@ const GameInfo = () => {
     <div className={styles.gameInfo}>
       {showMessage1 && (
         <div className={styles.gameInfo__one}>
-          <span className={styles.playerName}>{looser}</span>
+          <div className={styles.gameInfo__names}>
+            <span className={styles.playerName}>{computerSelection}</span>
+            <span className={styles.playerType}>{"(Computer)"}</span>
+          </div>
           <span className={styles.vs}>vs</span>
-          <span className={styles.playerName}>{winner}</span>
+          <div className={styles.gameInfo__names}>
+            <span className={styles.playerName}>
+              {playerSelection.join(" | ")}
+            </span>
+            <span className={styles.playerType}>{"(You)"}</span>
+          </div>
         </div>
       )}
       {showMessage2 && (
         <div className={styles.gameInfo__two}>
-          <span>{winner}</span> WON
+          <span className={styles.winner}>{winner}</span> WON
         </div>
       )}
       {showMessage2 && (
         <div className={styles.gameInfo__prize}>
-          YOU WON <span className={styles.gameInfo__amount}>{winAmount}</span>
+          {winnerType == "Player" ? "YOU" : "COMPUTER"} WON{" "}
+          <span className={styles.gameInfo__amount}>{winAmount}</span>
         </div>
       )}
     </div>

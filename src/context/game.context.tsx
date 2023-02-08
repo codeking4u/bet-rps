@@ -1,31 +1,16 @@
-import { createContext, useState, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 import { GameMoves } from "../types/game-move.enum";
+import { gameProviderContextProps } from "../types/interface";
+import { GameContextProp } from "../types/interface";
+import { winnerLogic } from "../utils/gamelogic";
 
-interface gameProviderContextProps {
-  children: React.ReactNode;
-}
-
-interface GameContextProp {
-  state: {
-    playerSelection: string[];
-    computerSelection: string;
-    winner: string;
-    selectedMoves: string[];
-    coinValue: number;
-    betAmount: number;
-    balance: number;
-    winCount: number;
-    bets: { [key in GameMoves]: number };
-    gameStatus: "START_PLAY" | "IN_PROGRESS" | "RESULT_TIME";
-  };
-  dispatch: any;
-}
 export const GameContext = createContext<GameContextProp>({
   state: {
     playerSelection: [],
     computerSelection: "",
     winner: "",
+    winnerType: "",
     selectedMoves: [],
     coinValue: 500,
     betAmount: 0,
@@ -40,20 +25,6 @@ export const GameContext = createContext<GameContextProp>({
   },
   dispatch: (_: keyof typeof GameMoves) => {},
 });
-
-const winnerLogic = (computer: string, player: string[]) => {
-  let winner = "";
-  if (
-    (computer === GameMoves.Scissors && player.includes(GameMoves.Rock)) ||
-    (computer === GameMoves.Rock && player.includes(GameMoves.Paper)) ||
-    (computer === GameMoves.Paper && player.includes(GameMoves.Scissors))
-  ) {
-    winner = "player";
-  } else {
-    winner = "computer";
-  }
-  return winner;
-};
 
 const gameReducer = (
   state: any,
@@ -90,8 +61,9 @@ const gameReducer = (
     case "play":
       const computer = Object.values(GameMoves)[Math.floor(Math.random() * 3)];
 
-      let winner = "";
-      winner = winnerLogic(computer, state.playerSelection);
+      let winnerData = winnerLogic(computer, state.playerSelection);
+      let winner = winnerData[0];
+      let winnerType = winnerData[1];
 
       if (winner === "player") {
         state.balance += state.betAmount;
@@ -104,6 +76,7 @@ const gameReducer = (
         ...state,
         computerSelection: computer,
         winner,
+        winnerType,
         bets: { ...state.bets },
         gameStatus: "IN_PROGRESS",
       };
@@ -117,6 +90,7 @@ const gameReducer = (
         playerSelection: [],
         computerSelection: "",
         winner: "",
+        winnerType: "",
         moves: ["rock", "paper", "scissors"],
         betAmount: 0,
         coinValue: 500,
@@ -139,6 +113,7 @@ export const GameProvider = ({ children }: gameProviderContextProps) => {
     playerSelection: [],
     computerSelection: "",
     winner: "",
+    winnerType: "",
     moves: ["rock", "paper", "scissors"],
     betAmount: 0,
     coinValue: 500,
