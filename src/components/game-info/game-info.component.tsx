@@ -22,7 +22,7 @@ const GameInfo = () => {
       setShowMessage2(true);
     } else {
       setShowMessage1(false);
-      setShowMessage2(false);
+      setShowMessage2(true);
     }
   }, [gameStatus]);
 
@@ -43,12 +43,12 @@ const GameInfo = () => {
           </div>
         </div>
       )}
-      {showMessage2 && (
+      {showMessage2 && winner && (
         <div className={`${styles.gameInfo__two} ${styles[winner]}`}>
           <span>{winner}</span> WON
         </div>
       )}
-      {showMessage2 && (
+      {showMessage2 && winner && (
         <div className={styles.gameInfo__prize}>
           {winnerType === "Player" ? "YOU" : "COMPUTER"} WON{" "}
           {state.winnerType === "Player" && (
