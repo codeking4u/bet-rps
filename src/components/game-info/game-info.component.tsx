@@ -22,7 +22,7 @@ const GameInfo = () => {
       setShowMessage2(true);
     } else {
       setShowMessage1(false);
-      setShowMessage2(true);
+      setShowMessage2(false);
     }
   }, [gameStatus]);
 

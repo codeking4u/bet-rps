@@ -8,15 +8,22 @@
 
   &__one {
     display: flex;
-    font-size: 30px;
+    font-size: 1.9rem;
     font-weight: 700;
 
     .vs {
-      margin: 0 40px;
+      margin: 0 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.9rem;
     }
   }
   &__two {
-    font-size: 45px;
+    font-size: 2.81rem;
     font-weight: 700;
     color: #0cb10c;
     text-transform: uppercase;
@@ -33,7 +40,7 @@
   }
 
   &__prize {
-    font-size: 21px;
+    font-size: 1.3rem;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -50,13 +57,16 @@
     row-gap: 18px;
 
     .playerName {
-      font-size: 40px;
+      font-size: 2.5rem;
       color: #fff;
       text-transform: uppercase;
+      @media (max-width: 900px) {
+        font-size: 2rem;
+      }
     }
     .playerType {
       color: #d8db1c;
-      font-size: 12px;
+      font-size: 0.75rem;
       text-transform: uppercase;
     }
   }
