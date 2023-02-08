@@ -2,6 +2,15 @@
 
 A Rock, Paper, Scissors game, with the ability to bet on the winning position.
 
+### Desktop view
+
+<img width="717" alt="image" src="https://user-images.githubusercontent.com/40830836/217591344-59c86678-eaeb-438e-be0f-425e5d3ac90e.png">
+
+### Mobile view
+<img width="237" alt="image" src="https://user-images.githubusercontent.com/40830836/217594548-19647a72-bb47-466d-86f2-3f62584f8016.png">
+
+
+
 ## Technologies used:
 
 1. React with TypeScript for UI.
