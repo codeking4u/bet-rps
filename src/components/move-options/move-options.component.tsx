@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Bet from "../move/move.component";
+import Move from "../move/move.component";
 
 import { GameMoves } from "../../types/game-move.enum";
 import { GameContext } from "../../context/game.context";
@@ -27,7 +27,7 @@ const MoveOptions = () => {
         }`}
       >
         {keys.map((move) => (
-          <Bet key={move} bet={move} onClick={() => betClickHandler(move)} />
+          <Move key={move} bet={move} onClick={() => betClickHandler(move)} />
         ))}
       </div>
     </div>

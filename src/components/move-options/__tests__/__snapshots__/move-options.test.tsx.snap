@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="betPosition"
+>
+  <div>
+    PICK YOUR POSITIONS
+  </div>
+  <div
+    className="betContainer "
+  >
+    <div
+      className="betOption rock  "
+      onClick={[Function]}
+    >
+      <div>
+        Rock
+         
+      </div>
+    </div>
+    <div
+      className="betOption paper  "
+      onClick={[Function]}
+    >
+      <div>
+        Paper
+         
+      </div>
+    </div>
+    <div
+      className="betOption scissors  "
+      onClick={[Function]}
+    >
+      <div>
+        Scissors
+         
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="header"
+>
+  <div>
+    Balance: 
+    <span>
+      5000
+    </span>
+  </div>
+  <div>
+    BET: 
+    <span>
+      0
+    </span>
+  </div>
+  <div>
+    WIN: 
+    <span>
+      0
+    </span>
+  </div>
+</div>
+`;

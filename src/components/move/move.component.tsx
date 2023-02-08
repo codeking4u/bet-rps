@@ -5,7 +5,7 @@ import { GameMoves } from "../../types/game-move.enum";
 
 import styles from "./move.module.scss";
 
-const Bet = ({ bet, onClick }: betInterface) => {
+const Move = ({ bet, onClick }: betInterface) => {
   const { state } = useContext(GameContext);
   const gameMove = GameMoves[bet];
   let disableMoveClass = false;
@@ -34,4 +34,4 @@ const Bet = ({ bet, onClick }: betInterface) => {
   );
 };
 
-export default Bet;
+export default Move;
