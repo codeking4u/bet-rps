@@ -32,14 +32,14 @@ const GameInfo = () => {
         <div className={styles.gameInfo__one}>
           <div className={styles.gameInfo__names}>
             <span className={styles.playerName}>{computerSelection}</span>
-            <span className={styles.playerType}>{"(Computer)"}</span>
+            <span className={styles.playerType}>{"( Computer )"}</span>
           </div>
           <span className={styles.vs}>vs</span>
           <div className={styles.gameInfo__names}>
             <span className={styles.playerName}>
               {playerSelection.join(" | ")}
             </span>
-            <span className={styles.playerType}>{"(You)"}</span>
+            <span className={styles.playerType}>{"( You )"}</span>
           </div>
         </div>
       )}

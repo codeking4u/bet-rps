@@ -20,7 +20,6 @@ export interface GameContextProp {
     computerSelection: string;
     winner: string;
     winnerType: string;
-    selectedMoves: string[];
     coinValue: number;
     betAmount: number;
     balance: number;

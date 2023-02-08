@@ -42,6 +42,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    row-gap: 18px;
 
     .playerName {
       font-size: 40px;
@@ -51,6 +52,7 @@
     .playerType {
       color: #d8db1c;
       font-size: 12px;
+      text-transform: uppercase;
     }
   }
 }
